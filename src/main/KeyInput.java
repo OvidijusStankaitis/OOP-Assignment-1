@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyInput implements KeyListener
 {
 
-    public boolean up = false, down = false, left = false, right = false;
+    public boolean up = false, down = false, left = false, right = false, esc = false;
 
     @Override
     public void keyTyped(KeyEvent keyEvent)
@@ -34,6 +34,10 @@ public class KeyInput implements KeyListener
         else if(keyCode == KeyEvent.VK_D)
         {
             right = true;
+        }
+        else if(keyCode == KeyEvent.VK_ESCAPE)
+        {
+            esc = !esc;
         }
     }
 

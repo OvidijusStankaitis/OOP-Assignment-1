@@ -1,18 +1,18 @@
+// Autorius Ovidijus Stankaitis
+// Grupe 5
+// Kursas PS1
+
+
 package main;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-
 import java.io.File;
 import java.io.IOException;
-
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class GamePanel extends JPanel {
     final int tileSizeNS = 32;
@@ -112,7 +112,7 @@ public class GamePanel extends JPanel {
         tileMap1 = new TileMap("src/main/map1.json", "src/main/world.png", tileSizeNS);
         tileMap2 = new TileMap("src/main/map2.json", "src/main/world.png", tileSizeNS);
 
-        // Initialize tileImages for each TileMap object
+
         tileMap.initTilesetImages();
         tileMap1.initTilesetImages();
         tileMap2.initTilesetImages();
@@ -135,8 +135,8 @@ public class GamePanel extends JPanel {
     private boolean isPlayerCaught() {
         Rectangle player = new Rectangle(playerX, playerY, tileSize, tileSize);
         for (Enemy enemy : enemies) {
-            int enemyX = enemy.getX() - cameraX; // Adjust for the camera position
-            int enemyY = enemy.getY() - cameraY; // Adjust for the camera position
+            int enemyX = enemy.getX() - cameraX;
+            int enemyY = enemy.getY() - cameraY;
             Rectangle enemyRec = new Rectangle(enemyX, enemyY, tileSize, tileSize);
             if (player.intersects(enemyRec)) {
                 return true;
@@ -328,8 +328,8 @@ public class GamePanel extends JPanel {
                 g2.drawImage(subImage, transform, null);
             }
 
-            g2.setColor(Color.RED);
-            g2.drawRect(playerX, playerY, tileSize, tileSize);
+//            g2.setColor(Color.RED);
+//            g2.drawRect(playerX, playerY, tileSize, tileSize);
 
             for (Enemy enemy : enemies) {
                 enemy.draw(g2, tileSize, scale, cameraX, cameraY);

@@ -9,11 +9,12 @@ public class MouseInput extends MouseAdapter {
     private int mouseX;
     private int mouseY;
 
-    public MouseInput(MapEditor mapEditor) { this.mapEditor = mapEditor; }
+    public MouseInput(MapEditor mapEditor) {
+        this.mapEditor = mapEditor;
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
         mapEditor.handleMouseClick(e.getX(), e.getY());
         mapEditor.handleTilesetClick(e.getX(), e.getY());
     }

@@ -4,11 +4,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.*;
 import javax.imageio.ImageIO;
-import java.nio.charset.StandardCharsets;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class TileMap {
     private int width;
@@ -31,7 +32,7 @@ public class TileMap {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode mapJson = mapper.readTree(new File(mapFile));
 
-            this.mapDataE = mapJson;  // Assigning the map JSON to mapDataE
+            this.mapDataE = mapJson;
 
             width = mapJson.get("width").asInt();
             height = mapJson.get("height").asInt();
@@ -56,30 +57,6 @@ public class TileMap {
         }
     }
 
-    public int getMapHeight() {
-        return height;
-    }
-
-    public int getMapWidth() {
-        return width;
-    }
-
-    public int getTile(int row, int col) {
-        return mapData[0][row][col];
-    }
-
-    public void setTile(int row, int col, int value) {
-        mapData[0][row][col] = value;
-    }
-
-    public int getSelectedTile() {
-        return selectedTile;
-    }
-
-    public void setSelectedTile(int value) {
-        selectedTile = value;
-    }
-
     public void initTilesetImages() {
         int tilesetColumns = tileset.getWidth() / tileSizeNS;
         int tilesetRows = tileset.getHeight() / tileSizeNS;
@@ -97,12 +74,12 @@ public class TileMap {
         int rowIdx = tileIndex / 10;
         int colIdx = tileIndex % 10;
 
-        // Ensure the indices are within bounds
+
         if (rowIdx >= 0 && rowIdx < height && colIdx >= 0 && colIdx < width) {
-            // Change the tile in the second layer of the map data
+
             mapData[1][rowIdx][colIdx] = newTileType;
 
-            // Also change it in the JsonNode
+
             ArrayNode row = (ArrayNode) ((ArrayNode) mapDataE.get("layers").get(1).get("data")).get(rowIdx);
             row.set(colIdx, mapper.valueToTree(newTileType));
         }
@@ -150,4 +127,3 @@ public class TileMap {
         return rows;
     }
 }
-

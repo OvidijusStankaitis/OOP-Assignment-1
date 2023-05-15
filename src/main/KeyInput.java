@@ -3,63 +3,43 @@ package main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyInput implements KeyListener
-{
+public class KeyInput implements KeyListener {
 
     public boolean up = false, down = false, left = false, right = false, esc = false;
 
     @Override
-    public void keyTyped(KeyEvent keyEvent)
-    {
+    public void keyTyped(KeyEvent keyEvent) {
 
     }
 
     @Override
-    public void keyPressed(KeyEvent keyEvent)
-    {
+    public void keyPressed(KeyEvent keyEvent) {
         int keyCode = keyEvent.getKeyCode();
 
-        if(keyCode == KeyEvent.VK_W)
-        {
+        if (keyCode == KeyEvent.VK_W) {
             up = true;
-        }
-        else if(keyCode == KeyEvent.VK_A)
-        {
+        } else if (keyCode == KeyEvent.VK_A) {
             left = true;
-        }
-        else if(keyCode == KeyEvent.VK_S)
-        {
+        } else if (keyCode == KeyEvent.VK_S) {
             down = true;
-        }
-        else if(keyCode == KeyEvent.VK_D)
-        {
+        } else if (keyCode == KeyEvent.VK_D) {
             right = true;
-        }
-        else if(keyCode == KeyEvent.VK_ESCAPE)
-        {
+        } else if (keyCode == KeyEvent.VK_ESCAPE) {
             esc = !esc;
         }
     }
 
     @Override
-    public void keyReleased(KeyEvent keyEvent)
-    {
+    public void keyReleased(KeyEvent keyEvent) {
         int keyCode = keyEvent.getKeyCode();
 
-        if(keyCode == KeyEvent.VK_W)
-        {
+        if (keyCode == KeyEvent.VK_W) {
             up = false;
-        }
-        else if(keyCode == KeyEvent.VK_A)
-        {
+        } else if (keyCode == KeyEvent.VK_A) {
             left = false;
-        }
-        else if(keyCode == KeyEvent.VK_S)
-        {
+        } else if (keyCode == KeyEvent.VK_S) {
             down = false;
-        }
-        else if(keyCode == KeyEvent.VK_D)
-        {
+        } else if (keyCode == KeyEvent.VK_D) {
             right = false;
         }
     }

@@ -42,7 +42,7 @@ public class Enemy {
         int destY = y - cameraY;
         BufferedImage subImage = frames[currentFrame];
 
-        AffineTransform transform = AffineTransform.getScaleInstance(scale, scale); // Add scaling transformation
+        AffineTransform transform = AffineTransform.getScaleInstance(scale, scale); 
 
         if (left) {
             transform.concatenate(AffineTransform.getTranslateInstance((destX + tileSize) / scale, destY / scale));
@@ -53,8 +53,8 @@ public class Enemy {
             g2.drawImage(subImage, transform, null);
         }
 
-        g2.setColor(Color.RED);
-        g2.drawRect(destX, destY, tileSize, tileSize);
+//        g2.setColor(Color.RED);
+//        g2.drawRect(destX, destY, tileSize, tileSize);
     }
 
     public int getX() {
@@ -65,4 +65,3 @@ public class Enemy {
         return y;
     }
 }
-
